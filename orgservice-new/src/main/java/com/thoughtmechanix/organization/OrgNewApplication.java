@@ -12,7 +12,7 @@ import javax.servlet.Filter;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableCircuitBreaker
-public class Application {
+public class OrgNewApplication {
 
     @Bean
     public Filter userContextFilter() {
@@ -21,6 +21,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(OrgNewApplication.class, args);
     }
 }
