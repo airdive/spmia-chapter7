@@ -1,3 +1,4 @@
+
 #Setting the logging levels for the service
 logging:
   level:
@@ -16,6 +17,7 @@ eureka:
 
 server:
   contextPath:   /auth
+  port: 8901
 
 # 在git仓库的属性文件中配置以下属性，可以让本地属性覆盖远程属性
 # spring.cloud.config.allow-override: true
