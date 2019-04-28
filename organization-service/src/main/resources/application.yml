@@ -38,7 +38,7 @@ spring:
     platform: postgres
     driverClassName: org.postgresql.Driver
     # 若docker使用的DockerToolBox,则localhost为docker-machine的IP地址, 192.168.99.100
-    url: jdbc:postgresql://${POSTGRESQL_HOST:192.168.99.100}:5432/eagle_eye_dev
+    url: jdbc:postgresql://${POSTGRESQL_HOST:localhost}:5432/eagle_eye_dev
     username: postgres_dev
     password: p0stgr@s
     testWhileIdle: true
