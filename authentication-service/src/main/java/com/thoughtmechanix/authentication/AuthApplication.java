@@ -16,7 +16,7 @@ import java.util.Map;
 @RestController
 @EnableResourceServer
 @EnableAuthorizationServer
-public class Application {
+public class AuthApplication {
 
     //curl  eagleeye:thisissecret@192.168.99.100:8901/auth/oauth/token -d grant_type=password -client_id=eagleeye  -d scope=webclient -d username=william.woodward -d password=password2
 
@@ -31,7 +31,7 @@ public class Application {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(AuthApplication.class, args);
     }
 
 
