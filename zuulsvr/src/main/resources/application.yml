@@ -10,8 +10,9 @@ spring:
 
 server:
   port: 5555
-
+  max-http-header-size: 8192
   #Setting logging levels
+
 logging:
     level:
       com.netflix: WARN
