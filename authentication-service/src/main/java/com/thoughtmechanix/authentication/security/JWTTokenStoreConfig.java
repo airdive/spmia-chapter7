@@ -32,6 +32,10 @@ public class JWTTokenStoreConfig {
     }
 
 
+    /**
+     * 定义令牌如何被翻译
+     * @return
+     */
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
@@ -39,6 +43,10 @@ public class JWTTokenStoreConfig {
         return converter;
     }
 
+    /**
+     * token增强器，为token增加额外的信息organizationId
+     * @return
+     */
     @Bean
     public TokenEnhancer jwtTokenEnhancer() {
         return new JWTTokenEnhancer();
