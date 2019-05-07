@@ -1,6 +1,12 @@
 spring:
   application:
-    name: configserver
+    name: specialroutesservice
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      enabled: true
 
 # 下载 jce_policy-8.zip，将local_policy.jar和US_export_policy.jar
 # 移到/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/security
