@@ -33,6 +33,11 @@ public class JDBCWebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 
    // Using a BCRYPT Encryption Algorithm. The password fors the users are password1 and password2 respectively
    // The paswords were generated online with https://www.dailycred.com/article/bcrypt-calculator
+    /**
+     * 密码编码器，OAuth接收到的密码会使用编译器编译密码后与数据库中密码进行比较。
+     * 使用BCryptPasswordEncoder的encode()方法即可得到BCrypt加密后的字符
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder(){
         PasswordEncoder encoder = new BCryptPasswordEncoder();
