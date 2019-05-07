@@ -19,7 +19,7 @@ import java.util.List;
 @Component
 public class AuthenticationFilter extends ZuulFilter {
     private static final int FILTER_ORDER =  2;
-    private static final boolean  SHOULD_FILTER=false;
+    private static final boolean  SHOULD_FILTER=true;
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);
 
 
@@ -39,6 +39,10 @@ public class AuthenticationFilter extends ZuulFilter {
         return FILTER_ORDER;
     }
 
+    /**
+     * 根据shouldFilter()的返回值来决定该过滤器是否要执行
+     * @return
+     */
     @Override
     public boolean shouldFilter() {
         return SHOULD_FILTER;
@@ -62,6 +66,7 @@ public class AuthenticationFilter extends ZuulFilter {
                             null, UserInfo.class, filterUtils.getAuthToken());
         }
         catch(HttpClientErrorException ex){
+            logger.info(ex.toString());
             if (ex.getStatusCode()==HttpStatus.UNAUTHORIZED) {
                 return null;
             }
@@ -92,6 +97,7 @@ public class AuthenticationFilter extends ZuulFilter {
         }
 
         UserInfo userInfo = isAuthTokenValid();
+        logger.debug("u : "+userInfo.getOrganizationId());
         if (userInfo!=null){
             filterUtils.setUserId(userInfo.getUserId());
             filterUtils.setOrgId(userInfo.getOrganizationId());

@@ -27,6 +27,10 @@ public class ResponseFilter extends ZuulFilter{
         return FILTER_ORDER;
     }
 
+    /**
+     * 根据shouldFilter()的返回值来决定该过滤器是否要执行
+     * @return
+     */
     @Override
     public boolean shouldFilter() {
         return SHOULD_FILTER;
@@ -38,7 +42,7 @@ public class ResponseFilter extends ZuulFilter{
 
         logger.debug("Adding the correlation id to the outbound headers.");
         ctx.getResponse().addHeader(FilterUtils.CORRELATION_ID, filterUtils.getCorrelationId());
-
+        logger.debug("Authorization : "+ctx.getRequest().getHeader("Authorization"));
         logger.debug("Completing outgoing request for {}.", ctx.getRequest().getRequestURI());
 
         return null;
