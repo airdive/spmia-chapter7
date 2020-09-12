@@ -1,6 +1,7 @@
 package com.thoughtmechanix.zuulsvr.filters;
 
 import com.netflix.zuul.context.RequestContext;
+import lombok.extern.slf4j.Slf4j;
 import org.fluentd.logger.FluentLogger;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +10,10 @@ import java.util.Map;
 
 
 @Component
+@Slf4j
 public class FilterUtils {
 
-    private static FluentLogger FLOG = FluentLogger.getLogger("tmx", "fluentd", 24224);
+//    private static FluentLogger FLOG = FluentLogger.getLogger("tmx", "fluentd", 24224);
 
     public static final String CORRELATION_ID = "tmx-correlation-id";
     public static final String AUTH_TOKEN     = "Authorization";
@@ -21,9 +23,9 @@ public class FilterUtils {
     public static final String POST_FILTER_TYPE = "post";
     public static final String ROUTE_FILTER_TYPE = "route";
 
-    private FluentLogger getFLOG() {
-        return FLOG;
-    }
+//    private FluentLogger getFLOG() {
+//        return FLOG;
+//    }
 
     public String getCorrelationId(){
         RequestContext ctx = RequestContext.getCurrentContext();
@@ -87,20 +89,21 @@ public class FilterUtils {
     public void flog(String message){
 
         Map<String, Object> data = new HashMap<String, Object>();
-        String log ="{'serviceName':'%s'," +
+        String log1 ="{'serviceName':'%s'," +
                 "'correlationId':'%s'," +
                 "'organizationId':'%s'," +
                 "'userId':'%s'," +
                 "'message':'%s'}";
 
-        String msg = String.format(log,
+        String msg = String.format(log1,
                 "ZUUL",
                 getCorrelationId(),
                 getOrgId(),
                 getUserId(),
                 message);
         data.put("tmxdata",msg );
-        FLOG.log("tmx",data);
+        log.info("data: "+data);
+//        FLOG.log("tmx",data);
     }
 
 }

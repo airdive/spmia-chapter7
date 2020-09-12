@@ -29,7 +29,7 @@ public class OrganizationServiceController {
 
 
     private static final Logger logger = LoggerFactory.getLogger(OrganizationServiceController.class);
-    private static FluentLogger FLOG = FluentLogger.getLogger("tmx.organizationserver", "fluentd", 24224);
+//    private static FluentLogger FLOG = FluentLogger.getLogger("tmx.organizationserver", "fluentd", 24224);
 
 
     @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)

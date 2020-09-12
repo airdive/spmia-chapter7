@@ -30,7 +30,7 @@ public class UserContext {
     public static String getOrgId() { return orgId.get(); }
     public static void setOrgId(String aOrg) {userId.set(aOrg);}
 
-    private static FluentLogger FLOG = FluentLogger.getLogger("tmx", "fluentd", 24224);
+//    private static FluentLogger FLOG = FluentLogger.getLogger("tmx", "fluentd", 24224);
 
     public static final void flog(String message){
         Map<String, Object> data = new HashMap<String, Object>();
@@ -47,7 +47,7 @@ public class UserContext {
                 getUserId(),
                 message);
         data.put("tmxdata",msg );
-        FLOG.log("tmx", data);
+//        FLOG.log("tmx", data);
     }
     public static HttpHeaders getHttpHeaders(){
         HttpHeaders httpHeaders = new HttpHeaders();

@@ -4,6 +4,7 @@ package com.thoughtmechanix.zuulsvr.filters;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.thoughtmechanix.zuulsvr.model.UserInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Component
+@Slf4j
 public class AuthenticationFilter extends ZuulFilter {
     private static final int FILTER_ORDER =  2;
-    private static final boolean  SHOULD_FILTER=false;
+    private static final boolean  SHOULD_FILTER=true;
 
     @Autowired
     FilterUtils filterUtils;
@@ -66,7 +68,7 @@ public class AuthenticationFilter extends ZuulFilter {
 
             throw ex;
         }
-
+        log.info("body: "+restExchange.getBody());
 
         return restExchange.getBody();
     }
